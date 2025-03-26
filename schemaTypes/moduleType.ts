@@ -5,20 +5,29 @@ export const moduleType = {
     fields: [
         {
             name: 'name',
+            title: 'Key',
+            type: 'string',
+        },
+        {
+            name: 'title',
+            title: 'Title',
             type: 'string',
         },
         {
             name: 'order',
+            title: 'Order',
             type: 'number',
         },
         {
             name: 'minutes',
+            title: 'Minutes',
             type: 'number',
         },
         {
             name: 'text',
+            title: 'Text',
             type: 'array',
-            of: [{type: 'block'}],
+            of: [ { type: 'block' } ],
         }
     ],
 };
