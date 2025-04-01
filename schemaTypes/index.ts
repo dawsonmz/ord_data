@@ -1,3 +1,4 @@
 import { moduleType } from './moduleType'
+import { trainingPlanType } from './trainingPlanType'
 
-export const schemaTypes = [ moduleType ]
+export const schemaTypes = [ moduleType, trainingPlanType ]
