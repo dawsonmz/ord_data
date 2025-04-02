@@ -9,6 +9,17 @@ export const trainingPlanType = {
             type: 'number',
         },
         {
+            name: 'season',
+            title: 'Season',
+            type: 'string',
+            options: {
+                list: [
+                    'Spring 2025',
+                    'Fall 2025',
+                ],
+            }
+        },
+        {
             name: 'date_time',
             title: 'Date and Time',
             type: 'datetime',
@@ -30,4 +41,18 @@ export const trainingPlanType = {
             ],
         }
     ],
+    preview: {
+        select: {
+            season: 'season',
+            lesson_number: 'lesson_number',
+            date_time: 'date_time',
+        },
+        prepare(selection: { season: String; lesson_number: Number; date_time: String; }) {
+            const { season, lesson_number, date_time } = selection;
+            return {
+                title: season + ' - lesson ' + lesson_number,
+                subtitle: new Date(date_time.valueOf()).toLocaleDateString('no-NO', { dateStyle: 'short' }),
+            };
+        }
+    }
 };
