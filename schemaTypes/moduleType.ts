@@ -4,11 +4,6 @@ export const moduleType = {
     type: 'document',
     fields: [
         {
-            name: 'name',
-            title: 'Key',
-            type: 'string',
-        },
-        {
             name: 'title',
             title: 'Title',
             type: 'string',
@@ -28,6 +23,6 @@ export const moduleType = {
             title: 'Text',
             type: 'array',
             of: [ { type: 'block' } ],
-        }
+        },
     ],
 };

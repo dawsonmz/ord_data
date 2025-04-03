@@ -11,13 +11,8 @@ export const trainingPlanType = {
         {
             name: 'season',
             title: 'Season',
-            type: 'string',
-            options: {
-                list: [
-                    'Spring 2025',
-                    'Fall 2025',
-                ],
-            }
+            type: 'reference',
+            to: [{ type: 'season' }],
         },
         {
             name: 'date_time',
@@ -30,29 +25,25 @@ export const trainingPlanType = {
             type: 'array',
             of: [
                 {
-                    type: 'string',
-                    options: {
-                        list: [
-                            { title: 'offskates', value: 'offskates' },
-                            { title: 'free_skate_wrap_up', value: 'free_skate_wrap_up' },
-                        ],
-                    }
+                    type: 'reference',
+                    to: [{ type: 'module' }],
                 }
             ],
-        }
+        },
     ],
     preview: {
         select: {
-            season: 'season',
+            season: 'season.season',
+            year: 'season.year',
             lesson_number: 'lesson_number',
             date_time: 'date_time',
         },
-        prepare(selection: { season: String; lesson_number: Number; date_time: String; }) {
-            const { season, lesson_number, date_time } = selection;
+        prepare(selection: { season: String; year: String; lesson_number: Number; date_time: String; }) {
+            const { season, year, lesson_number, date_time } = selection;
             return {
-                title: season + ' - lesson ' + lesson_number,
+                title: `${season} ${year} - lesson ${lesson_number}`,
                 subtitle: new Date(date_time.valueOf()).toLocaleDateString('no-NO', { dateStyle: 'short' }),
             };
-        }
-    }
+        },
+    },
 };
